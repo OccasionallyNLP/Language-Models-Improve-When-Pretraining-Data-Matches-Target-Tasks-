@@ -11,6 +11,8 @@
 2. Embed benchmark data and pretrained dataset.
 3. 
 
+★ data shard하고 나서 sort 해야함.
+
 ## component
 - Embed training and benchmark examples
   - huggingface & faiss

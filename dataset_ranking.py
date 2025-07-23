@@ -21,16 +21,15 @@ if __name__ == "__main__":
     subfolders = [name for name in os.listdir(args.data_dir) if os.path.isdir(os.path.join(args.data_dir, name))]
     subfolders = sorted(subfolders, key=lambda x: int(x))
 
-    index = faiss.IndexFlatL2(args.dim)
+    index = faiss.IndexFlatIP(args.dim)
     for folder in subfolders:
         npy_files = glob.glob(os.path.join(args.data_dir, folder, '*.npy'))
         assert npy_files
         for file in npy_files:
             ds = np.fromfile(file, dtype=np.float32)
             ds = ds.reshape(-1, args.dim)
+            faiss.normalize_L2(ds)
             index.add(ds)
-    faiss.normalize_L2(ds)
-    index.add(ds)
     # benchmark dataset
     bm_ds = np.fromfile(args.benchmark_path, dtype=np.float32)
     bm_ds = bm_ds.reshape(-1, args.dim)

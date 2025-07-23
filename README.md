@@ -36,3 +36,10 @@
   : dataset 개수 : 10003
 - bigbench (default) 
   : min value: 8. dataset 종류 167. 총 dataset 
+
+- haerae(test)
+  : dataset 개수 : 1,538, 총 6종류
+- kmmlu(test)
+  : dataset 개수 : 35030, 총 45종류
+- kmmlu pro (test)
+  : 12k 
